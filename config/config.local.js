@@ -17,4 +17,7 @@ exports.mysql = {
 };
 
 exports.keys = '3136';
-exports.token_key = 'caimf_secrect_3136';
+exports.config = {
+  token_key: 'caimf_secrect_3136',
+};
+
