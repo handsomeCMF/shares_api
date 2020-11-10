@@ -6,7 +6,8 @@
 
 const routerList = {
   userLogin: '/login',
-  getPermissionList: '/permission',
+  getAuthorList: '/author',
+  addAuthor: '/author/add',
   sharesList: '/shareList',
   getUserList: '/getUserList',
   getToken: '/token',
@@ -19,5 +20,6 @@ module.exports = app => {
   router.get(routerList.userLogin, controller.user.login);
   router.get(routerList.getUserList, controller.user.index);
   router.get(routerList.sharesList, controller.shares.index);
-  router.get(routerList.getPermissionList, controller.permission.index);
+  router.get(routerList.getAuthorList, controller.authorization.getList);
+  router.post(routerList.addAuthor, controller.authorization.add);
 };
