@@ -18,6 +18,19 @@ class AuthorizationController extends Controller {
     ctx.body = result;
   }
 
+  async menuList() {
+    const { ctx } = this;
+    const { authorization, page, perPage } = ctx.request.headers;
+    const token = getToken(authorization, this.config.token_key);
+    console.log(token);
+    const menuList = await ctx.service.author.getMenuList({ perPage, page }) || [];
+    const result = {
+      ...data,
+      data: menuList,
+    };
+    ctx.body = result;
+  }
+
   async add() {
     const { ctx } = this;
     const params = ctx.request.body;
