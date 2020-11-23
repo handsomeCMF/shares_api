@@ -5,6 +5,7 @@ class AuthorService extends Service {
 
   async getList() {
     const result = await this.app.mysql.select('authorization');
+    console.log(result);
     return result;
   }
 
@@ -14,6 +15,7 @@ class AuthorService extends Service {
       limit, // 返回数据量
       offset, // 数据偏移量
     });
+    console.log(result);
     return result;
   }
 

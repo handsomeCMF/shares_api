@@ -34,12 +34,9 @@ class AuthorizationController extends Controller {
   async add() {
     const { ctx } = this;
     const params = ctx.request.body;
-    console.log(params);
     const { authorization } = ctx.request.headers;
     const token = getToken(authorization, this.config.token_key);
-    console.log(token);
     const code = await ctx.service.author.add(params);
-    console.log(code);
     const result = {
       ...data,
       data: 1,
