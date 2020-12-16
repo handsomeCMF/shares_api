@@ -5,7 +5,6 @@ class AuthorService extends Service {
 
   async getList() {
     const result = await this.app.mysql.select('authorization');
-    console.log(result);
     return result;
   }
 
@@ -15,7 +14,6 @@ class AuthorService extends Service {
       limit, // 返回数据量
       offset, // 数据偏移量
     });
-    console.log(result);
     return result;
   }
 
@@ -28,6 +26,20 @@ class AuthorService extends Service {
     });
     return result;
   }
+
+  async userAuthor({ userId }) {
+    const sql = 'select authorization.id, user.name, user.roleId, authorId, authorization.name, '
+      + ' authorization.isRouter, authorization.parentId,authorization.router'
+      + ' from user '
+      + ' left join role on role.id=user.roleId'
+      + ' left join role_author on role_author.roleId=role.id'
+      + ' left join authorization on authorization.id=role_author.authorId';
+    const where = ` where user.id=${userId}`;
+    const result = await this.app.mysql.query(sql + where);
+
+    return result;
+  }
+
 }
 
 module.exports = AuthorService;
