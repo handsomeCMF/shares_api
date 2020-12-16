@@ -9,6 +9,7 @@ const routerList = {
   getAuthorList: '/author',
   addAuthor: '/author/add',
   menuList: '/author/menuList',
+  userAuthor: '/author/userAuthor',
   sharesList: '/shareList',
   getUserList: '/getUserList',
   getToken: '/token',
@@ -22,6 +23,7 @@ module.exports = app => {
   router.get(routerList.getUserList, controller.user.index);
   router.get(routerList.sharesList, controller.shares.index);
   router.get(routerList.getAuthorList, controller.authorization.getList);
+  router.get(routerList.userAuthor, controller.authorization.userAuthor);
   router.get(routerList.menuList, controller.authorization.menuList);
   router.post(routerList.addAuthor, controller.authorization.add);
 };
